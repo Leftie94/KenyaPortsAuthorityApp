@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Ess App</string>
+
+    <string-array name="leavetype">
+        <item>Sick leave</item>>
+        <item>Maternity/Paternity leave</item>>
+        <item>Bereavement</item>>
+        <item>Study/Sabbatical leave</item>>
+        <item>Other</item>
+    </string-array>
+
+
+
+
+
+</resources>

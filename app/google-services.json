@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "451195802035",
+    "firebase_url": "https://my-ess-app.firebaseio.com",
+    "project_id": "my-ess-app",
+    "storage_bucket": "my-ess-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451195802035:android:8336b0fe3e9d5953",
+        "android_client_info": {
+          "package_name": "com.example.leftie.Essapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "451195802035-v6ech3rqa89pc1u9n0h0fkcf1vrl15lh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.leftie.Essapp",
+            "certificate_hash": "c4ea7daaf8d263c849e14a8f72b76f7480d66c13"
+          }
+        },
+        {
+          "client_id": "451195802035-p1nuf00o08dp19jljksgh9hufvnctf7p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCu8DiCj8O8DrIREJ3HYMi3_csMdzrD3Ps"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "451195802035-p1nuf00o08dp19jljksgh9hufvnctf7p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

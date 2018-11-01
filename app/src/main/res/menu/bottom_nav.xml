@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_feed"
+        android:icon="@drawable/newsfeed"
+        android:title="Feed" />
+
+    <item
+        android:id="@+id/nav_personal"
+        android:icon="@drawable/personal_info"
+        android:title="Info" />
+
+    <item
+        android:id="@+id/nav_benefits_payment"
+        android:icon="@drawable/benifits_payment"
+        android:title="Benefits" />
+
+    <item
+        android:id="@+id/nav_leave"
+        android:icon="@drawable/leave"
+        android:title="Leave" />
+
+    <item
+        android:id="@+id/nav_feedback"
+        android:icon="@drawable/feedbackvector"
+        android:title="feeback" />
+</menu>
