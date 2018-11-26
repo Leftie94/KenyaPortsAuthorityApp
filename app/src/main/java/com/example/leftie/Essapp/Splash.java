@@ -1,8 +1,6 @@
 package com.example.leftie.Essapp;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +8,7 @@ import android.view.WindowManager;
 
 public class Splash extends AppCompatActivity {
 
-    private final int SPLASH_TIME_OUT = 4000;
+    private final int SPLASH_TIME_OUT = 2500;
 
 
     @Override
@@ -27,7 +25,7 @@ public class Splash extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent i = new Intent(Splash.this, users.class);
+                Intent i = new Intent(Splash.this, login.class);
                 startActivity(i);
                 finish();
 

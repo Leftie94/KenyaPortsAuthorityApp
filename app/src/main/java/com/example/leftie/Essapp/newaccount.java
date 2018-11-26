@@ -32,7 +32,7 @@ public class newaccount extends AppCompatActivity {
         setContentView(R.layout.activity_newaccount);
 
         signbtn = (Button) findViewById(R.id.btnsignup);
-        newemail = (EditText) findViewById(R.id.edtemail);
+        newemail = (EditText) findViewById(R.id.editemail);
         newpass = (EditText) findViewById(R.id.editpassword);
         FireAuth = FirebaseAuth.getInstance();
         databaseReference= FirebaseDatabase.getInstance().getReference("Users");

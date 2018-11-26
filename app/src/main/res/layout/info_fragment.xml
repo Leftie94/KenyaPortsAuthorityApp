@@ -69,8 +69,8 @@
             android:id="@+id/editname1"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/rounded_txtedit"
             android:ems="10"
             android:inputType="textPersonName"
@@ -81,8 +81,8 @@
             android:id="@+id/editname2"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/rounded_txtedit"
             android:ems="10"
             android:inputType="textPersonName"
@@ -93,8 +93,8 @@
             android:id="@+id/editname3"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/rounded_txtedit"
             android:ems="10"
             android:inputType="textPersonName"
@@ -113,17 +113,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtdesignation" />
 
-        <Spinner
-            android:id="@+id/dobspinner"
-            android:layout_width="200dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
-            android:background="@drawable/rounded_txtedit"
-            app:layout_constraintBottom_toBottomOf="@+id/txtdob"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/txtdob" />
-
         <TextView
             android:id="@+id/txtgender"
             android:layout_width="wrap_content"
@@ -135,28 +124,6 @@
             android:textColor="#17202A"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtdob" />
-
-        <RadioButton
-            android:id="@+id/radiomale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginLeft="50dp"
-            android:text="Male"
-            android:textColor="#17202A"
-            app:layout_constraintBaseline_toBaselineOf="@+id/txtgender"
-            app:layout_constraintStart_toEndOf="@+id/txtgender" />
-
-        <RadioButton
-            android:id="@+id/radiofemale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:text="Female"
-            android:textColor="#17202A"
-            app:layout_constraintBaseline_toBaselineOf="@+id/txtgender"
-            app:layout_constraintStart_toEndOf="@+id/radiomale" />
 
         <View
             android:id="@+id/view6"
@@ -171,7 +138,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editchild" />
+            app:layout_constraintTop_toBottomOf="@+id/childspiner" />
 
         <TextView
             android:id="@+id/txtaddress"
@@ -200,11 +167,11 @@
             app:layout_constraintTop_toBottomOf="@+id/txtname3" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editdesignation"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/rounded_txtedit"
             android:ems="10"
             android:inputType="text"
@@ -227,13 +194,12 @@
             android:id="@+id/maritalspinner"
             android:layout_width="200dp"
             android:layout_height="25dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/rounded_txtedit"
             app:layout_constraintBottom_toBottomOf="@+id/txtmarital"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/txtmarital"
-            app:layout_constraintVertical_bias="0.6" />
+            app:layout_constraintTop_toTopOf="@+id/txtmarital" />
 
         <TextView
             android:id="@+id/txtchild"
@@ -246,18 +212,6 @@
             android:textColor="#17202A"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtmarital" />
-
-        <EditText
-            android:id="@+id/editchild"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
-            android:background="@drawable/rounded_txtedit"
-            android:ems="10"
-            android:inputType="number"
-            app:layout_constraintBaseline_toBaselineOf="@+id/txtchild"
-            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/txttel"
@@ -275,11 +229,11 @@
             android:id="@+id/edittel"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/rounded_txtedit"
             android:ems="10"
-            android:inputType="number"
+            android:inputType="text|phone"
             app:layout_constraintBaseline_toBaselineOf="@+id/txttel"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -299,11 +253,11 @@
             android:id="@+id/editphone"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/rounded_txtedit"
             android:ems="10"
-            android:inputType="number"
+            android:inputType="text|phone"
             app:layout_constraintBaseline_toBaselineOf="@+id/txtphone"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -320,11 +274,11 @@
             app:layout_constraintTop_toBottomOf="@+id/txtphone" />
 
         <EditText
-            android:id="@+id/edtmyemail"
+            android:id="@+id/editmail"
             android:layout_width="80dp"
             android:layout_height="25dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
             android:background="@drawable/rounded_txtedit"
             android:ems="10"
             android:inputType="number"
@@ -347,8 +301,8 @@
             android:id="@+id/txtcode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:text="Code"
             android:textColor="#17202A"
             app:layout_constraintBaseline_toBaselineOf="@+id/editcode"
@@ -358,8 +312,8 @@
             android:id="@+id/editcode"
             android:layout_width="80dp"
             android:layout_height="25dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/rounded_txtedit"
             android:ems="10"
             android:inputType="number"
@@ -367,11 +321,11 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <EditText
-            android:id="@+id/edtemail"
+            android:id="@+id/editemail"
             android:layout_width="250dp"
             android:layout_height="25dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/rounded_txtedit"
             android:ems="10"
             android:inputType="textEmailAddress"
@@ -394,8 +348,8 @@
             android:id="@+id/editcity"
             android:layout_width="100dp"
             android:layout_height="25dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
             android:background="@drawable/rounded_txtedit"
             android:ems="10"
             android:inputType="text"
@@ -406,8 +360,8 @@
             android:id="@+id/txttown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:text="Town"
             android:textColor="#17202A"
             app:layout_constraintBaseline_toBaselineOf="@+id/edittown"
@@ -417,8 +371,8 @@
             android:id="@+id/edittown"
             android:layout_width="100dp"
             android:layout_height="25dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/rounded_txtedit"
             android:ems="10"
             android:inputType="text"
@@ -438,7 +392,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtemail" />
+            app:layout_constraintTop_toBottomOf="@+id/editemail" />
 
         <TextView
             android:id="@+id/txtfaminfo"
@@ -447,14 +401,277 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
             android:text="Family Info"
             android:textColor="#17202A"
             android:textSize="30dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view7" />
+
+        <TextView
+            android:id="@+id/txtspousename1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Spouse's Name"
+            android:textColor="#17202A"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtfaminfo" />
+
+        <EditText
+            android:id="@+id/editspousename"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/rounded_txtedit"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtspousename1"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/txttelno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:textColor="#17202A"
+            android:layout_marginTop="16dp"
+            android:text="Tel No"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtspousename1" />
+
+        <TextView
+            android:id="@+id/txtpphone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:textColor="#17202A"
+            android:layout_marginTop="16dp"
+            android:text="Phone No"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txttelno" />
+
+        <TextView
+            android:id="@+id/txteemail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:textColor="#17202A"
+            android:layout_marginTop="16dp"
+            android:text="Email "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtpphone" />
+
+        <EditText
+            android:id="@+id/editttel"
+            android:layout_width="wrap_content"
+            android:layout_height="23dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/rounded_txtedit"
+            android:ems="10"
+            android:inputType="text|number"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txttelno"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/editpphone"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/rounded_txtedit"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtpphone"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/editeemail"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/rounded_txtedit"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txteemail"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
+            android:background="@color/light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editeemail" />
+
+        <TextView
+            android:id="@+id/txtbankinfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:textColor="#17202A"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:text="Banking Info"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+        <TextView
+            android:id="@+id/txtbankname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:textColor="#17202A"
+            android:layout_marginTop="16dp"
+            android:text="Bank Name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtbankinfo" />
+
+        <TextView
+            android:id="@+id/txtbranch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Branch"
+            android:textColor="#17202A"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtbankname" />
+
+        <TextView
+            android:id="@+id/txtaccno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:textColor="#17202A"
+            android:layout_marginTop="16dp"
+            android:text="Account No"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtbranch" />
+
+
+        <EditText
+            android:id="@+id/editbankname"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/rounded_txtedit"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtbankname"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/editbranch"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/rounded_txtedit"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtbranch"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/editaccno"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/rounded_txtedit"
+            android:ems="10"
+            android:inputType="number"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtaccno"
+            app:layout_constraintEnd_toEndOf="parent" />
+        <Button
+            android:id="@+id/btnapply"
+            android:layout_width="315dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/rounded_txtedit"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:text="Apply Changes"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view8"
+            />
+
+        <View
+            android:id="@+id/view8"
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="4dp"
+            android:background="@color/light"
+            android:layout_marginRight="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editaccno" />
+
+        <Spinner
+            android:id="@+id/genderspinner"
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/rounded_txtedit"
+            app:layout_constraintBottom_toBottomOf="@+id/txtgender"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtgender"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/editdob"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:ems="10"
+            android:inputType="date"
+            android:background="@drawable/rounded_txtedit"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtdob"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Spinner
+            android:id="@+id/childspiner"
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/rounded_txtedit"
+            app:layout_constraintBottom_toBottomOf="@+id/txtchild"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtchild" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

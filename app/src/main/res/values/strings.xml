@@ -2,6 +2,7 @@
     <string name="app_name">Ess App</string>
 
     <string-array name="leavetype">
+        <item>--Select appropriate--</item>
         <item>Sick leave</item>>
         <item>Maternity/Paternity leave</item>>
         <item>Bereavement</item>>
@@ -9,8 +10,32 @@
         <item>Other</item>
     </string-array>
 
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>>
+    </string-array>
 
+    <string-array name="maritalstatus">
+        <item>Single</item>
+        <item>Married</item>>
+        <item>Divorced</item>>
+        <item>Widow</item>>
+        <item>Widower</item>>
+    </string-array>
 
+    <string-array name="noofchildren">
+        <item>1</item>
+        <item>2</item>>
+        <item>3</item>>
+        <item>4</item>>
+        <item>5</item>>
+        <item>6</item>>
+        <item>7</item>>
+        <item>8</item>>
+        <item>9</item>>
+        <item>10</item>>
+
+    </string-array>
 
 
 </resources>

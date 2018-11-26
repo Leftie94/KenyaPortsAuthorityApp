@@ -1,13 +1,11 @@
 package com.example.leftie.Essapp;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
 
 public class Home extends AppCompatActivity {
@@ -38,7 +36,7 @@ public class Home extends AppCompatActivity {
                     break;
 
                 case R.id.nav_feedback:
-                    selectedFragment = new feedbackfragment();
+                    selectedFragment = new inquiriesfragment();
                     break;
 
                 case R.id.nav_benefits_payment:

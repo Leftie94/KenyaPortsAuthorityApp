@@ -19,7 +19,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/edtemail"
+        android:id="@+id/editemail"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
@@ -40,7 +40,7 @@
         android:text="Password"
         android:textColor="#17202A"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtemail" />
+        app:layout_constraintTop_toBottomOf="@+id/editemail" />
 
     <EditText
         android:id="@+id/editpassword"
@@ -60,7 +60,7 @@
         android:layout_height="35dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/rounded_txtedit"
-        android:backgroundTint="@color/themecolor"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:onClick="signup_click"
         android:text="SIGN UP"
         android:textColor="#ffffff"

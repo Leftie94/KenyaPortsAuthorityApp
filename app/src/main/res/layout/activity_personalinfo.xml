@@ -367,7 +367,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <EditText
-            android:id="@+id/edtemail"
+            android:id="@+id/editemail"
             android:layout_width="250dp"
             android:layout_height="25dp"
             android:layout_marginEnd="40dp"
@@ -438,7 +438,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtemail" />
+            app:layout_constraintTop_toBottomOf="@+id/editemail" />
 
         <TextView
             android:id="@+id/txtfaminfo"

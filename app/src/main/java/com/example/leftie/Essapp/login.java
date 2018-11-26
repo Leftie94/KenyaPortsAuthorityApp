@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
-public class users extends AppCompatActivity {
+public class login extends AppCompatActivity {
 
     Button signbtn;
     EditText email,password;
@@ -39,7 +39,7 @@ public class users extends AppCompatActivity {
         getSupportActionBar().hide();
 
         signbtn =(Button) findViewById(R.id.btnSignin);
-        email = findViewById(R.id.edtemail);
+        email = findViewById(R.id.editemail);
         password = findViewById(R.id.editpass);
         fireauth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
@@ -50,7 +50,9 @@ public class users extends AppCompatActivity {
 
     public void signin_click(View view){
 
-        final ProgressDialog progressDialog = ProgressDialog.show(users.this, "Please wait...", "Processing...", true);
+
+
+        final ProgressDialog progressDialog = ProgressDialog.show(login.this, "Please wait...", "Processing...", true);
         (fireauth.signInWithEmailAndPassword(email.getText().toString(),password.getText().toString())).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -58,34 +60,46 @@ public class users extends AppCompatActivity {
 
                 if (task.isSuccessful()) {
 
-                    Toast.makeText(users.this, "Login Successful!!! ", Toast.LENGTH_LONG).show();
-                    Intent i = new Intent(users.this, Home.class);
+                    Toast.makeText(login.this, "Login Successful!!! ", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(login.this, Home.class);
                     startActivity(i);
+                    finish();
                     overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                     checkUserExist();
+                    email.getText().clear();
+                    password.getText().clear();
+
 
                 }
 
-                else {
+
+                else{
 
                     Log.e("ERROR",task.getException().toString());
-                    Toast.makeText(users.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(login.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
 
                 }
+
 
 
             }
 
         });
 
+
+
+
     }
+
+    //checks if User exists in the database
+
     public void checkUserExist(){
         final String user_id=fireauth.getCurrentUser().getUid();
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChild(user_id)){
-                    Intent logintInt=new Intent(users.this,Home.class );
+                    Intent logintInt=new Intent(login.this,Home.class );
                     startActivity(logintInt);
                 }
             }
@@ -105,15 +119,14 @@ public class users extends AppCompatActivity {
 
     public void newaccount_click(View view){
 
-        Intent i = new Intent(users.this, newaccount.class);
+        Intent i = new Intent(login.this, newaccount.class);
         startActivity(i);
     }
 
     public void resetpassword_click(View view){
 
-        Intent i = new Intent(users.this, resetpassword.class);
+        Intent i = new Intent(login.this, resetpassword.class);
     }
-
 
 
 }

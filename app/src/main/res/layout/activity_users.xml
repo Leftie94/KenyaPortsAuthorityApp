@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".users">
+    tools:context=".login">
 
     <TextView
         android:id="@+id/txthello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="98dp"
         android:text="Hi, welcome"
         android:textSize="45dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edtemail"
+        android:id="@+id/editemail"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
@@ -43,22 +43,22 @@
         android:id="@+id/editpass"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:background="@drawable/rounded_txtedit"
-        android:drawableLeft="@drawable/password"
         android:drawableStart="@drawable/password"
+        android:drawableLeft="@drawable/password"
         android:ems="15"
         android:hint="Enter password"
         android:inputType="textPassword"
-        android:paddingLeft="8dp"
         android:paddingStart="8dp"
+        android:paddingLeft="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtemail" />
+        app:layout_constraintTop_toBottomOf="@+id/editemail" />
 
     <Button
         android:id="@+id/btnSignin"
@@ -66,9 +66,9 @@
         android:layout_height="40dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/rounded_txtedit"
-        android:backgroundTint="@color/colorAccent"
-        android:text="Sign in"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:onClick="signin_click"
+        android:text="Sign in"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
