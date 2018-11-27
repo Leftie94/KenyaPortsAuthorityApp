@@ -1,4 +1,4 @@
-package com.example.leftie.Essapp;
+package com.example.leftie.Essapp.Fragments;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,6 +14,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.leftie.Essapp.Adapters.feedadapter;
+import com.example.leftie.Essapp.R;
+import com.example.leftie.Essapp.aboutus;
+import com.example.leftie.Essapp.carditems;
+import com.example.leftie.Essapp.Login.login;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -49,7 +54,6 @@ public class feedfragment extends Fragment {
         mrecyclerview.setLayoutManager(mlayoutManager);
         mrecyclerview.setAdapter(madapter);
         return view ;
-
 
     }
 
@@ -97,12 +101,6 @@ public class feedfragment extends Fragment {
     //}
 
 
-
-
-
-
-
-
     // Inflate the menu; this adds items to the action bar.
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) { inflater.inflate(R.menu.menufeed, menu);
@@ -126,7 +124,6 @@ public class feedfragment extends Fragment {
                 Intent j = new Intent(getActivity(),aboutus.class);
                 startActivity(j);
                 return true;
-
 
             default:
                 return super.onOptionsItemSelected(item);

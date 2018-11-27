@@ -1,4 +1,4 @@
-package com.example.leftie.Essapp;
+package com.example.leftie.Essapp.Fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,8 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.leftie.Essapp.R;
+import com.example.leftie.Essapp.inquiry;
+import com.example.leftie.Essapp.inquiry_notifications;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -23,7 +27,8 @@ import static android.widget.Toast.LENGTH_LONG;
 
 public class inquiriesfragment extends Fragment {
 
-    EditText edtto,edtsubject,edtmessage;
+    EditText edtsubject,edtmessage;
+    Spinner spinner;
     Button send;
     DatabaseReference databaseinquiries;
 
@@ -33,7 +38,7 @@ public class inquiriesfragment extends Fragment {
         View view = inflater.inflate(R.layout.inquiries_fragment, container, false);
         setHasOptionsMenu(true);
 
-        edtto = view.findViewById(R.id.editto);
+        spinner = view.findViewById(R.id.editto);
         edtsubject = view.findViewById(R.id.editsubject);
         edtmessage = view.findViewById(R.id.editmessage);
         send = view.findViewById(R.id.btnsend);
@@ -43,10 +48,9 @@ public class inquiriesfragment extends Fragment {
             @Override
             public void onClick(View view) {
                 sendfeeback();
-                edtto.getText().clear();
-                edtsubject.getText().clear();
-                edtmessage.getText().clear();
-
+                spinner.setSelection(0);
+                edtsubject.setText(null);
+                edtmessage.setText(null);
             }
         });
 
@@ -54,7 +58,7 @@ public class inquiriesfragment extends Fragment {
     }
     private void sendfeeback(){
 
-        String to = edtto.getText().toString().trim();
+        String to = spinner.getSelectedItem().toString().trim();
         String subject = edtsubject.getText().toString().trim();
         String message = edtmessage.getText().toString().trim();
 
@@ -71,12 +75,10 @@ public class inquiriesfragment extends Fragment {
 
     }
 
-
     // Inflate the menu; this adds items to the action bar if it is present.
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {inflater.inflate(R.menu.inquiries, menu);
             super.onCreateOptionsMenu(menu, inflater);
-
 
     }
 
@@ -91,8 +93,6 @@ public class inquiriesfragment extends Fragment {
             default:
                 return super.onOptionsItemSelected(item);
         }
-
     }
-
 
 }

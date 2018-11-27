@@ -7,8 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.leftie.Essapp.Fragments.feedfragment;
+import com.example.leftie.Essapp.Fragments.infofragment;
+import com.example.leftie.Essapp.Fragments.inquiriesfragment;
+import com.example.leftie.Essapp.Fragments.leavefragment;
 
-public class Home extends AppCompatActivity {
+
+public class home extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +44,6 @@ public class Home extends AppCompatActivity {
                     selectedFragment = new inquiriesfragment();
                     break;
 
-                case R.id.nav_benefits_payment:
-                    selectedFragment = new benefitsfragment();
-                    break;
 
                 case R.id.nav_leave:
                     selectedFragment = new leavefragment();
@@ -54,4 +56,9 @@ public class Home extends AppCompatActivity {
         }
     };
 
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+        super.onBackPressed();
+    }
 }
