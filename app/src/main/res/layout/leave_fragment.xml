@@ -158,15 +158,13 @@
     <EditText
         android:id="@+id/editreason"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/rounded_txtedit"
         android:ems="10"
-        android:inputType="text|textMultiLine"
-        android:lines="10"
-        android:maxLines="15"
-        android:minLines="4"
+        android:inputType="textMultiLine"
+        android:paddingLeft="10dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/txtreason"
         app:layout_constraintEnd_toEndOf="parent" />
 

@@ -1,4 +1,4 @@
-package com.example.leftie.Essapp;
+package com.example.leftie.Essapp.Adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,18 +6,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.leftie.Essapp.R;
+import com.example.leftie.Essapp.carditems;
+
 import java.util.ArrayList;
 
-public class inquirynotificationadapter extends RecyclerView.Adapter<inquirynotificationadapter.cardholder> {
-    private ArrayList<carditems> incardlist;
-    private OnItemClickListener inquirynotificationlistener;
+public class leavenotificationsadapter extends RecyclerView.Adapter<leavenotificationsadapter.cardholder> {
+    private ArrayList<carditems> lncardlist;
+    private OnItemClickListener leavenotificationlistener;
 
     public interface OnItemClickListener{
         void OnItemClick(int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener){
-        inquirynotificationlistener = listener;
+        leavenotificationlistener = listener;
     }
 
     public static class cardholder extends RecyclerView.ViewHolder{
@@ -38,28 +41,29 @@ public class inquirynotificationadapter extends RecyclerView.Adapter<inquirynoti
                             listener.OnItemClick(position);
                         }
                     }
+
                 }
             });
 
         }
     }
 
-    public inquirynotificationadapter(ArrayList<carditems> cardlist){
-        incardlist = cardlist;
+    public leavenotificationsadapter(ArrayList<carditems> cardlist){
+        lncardlist = cardlist;
 
     }
 
 
     @Override
     public cardholder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.inquiriesnotifications_cardview,parent,false);
-        cardholder ch = new cardholder(v,inquirynotificationlistener);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.leavenotifications_cardview,parent,false);
+        cardholder ch = new cardholder(v,leavenotificationlistener);
         return ch;
     }
 
     @Override
     public void onBindViewHolder(cardholder holder, int position) {
-        carditems currentitem = incardlist.get(position);
+        carditems currentitem = lncardlist.get(position);
 
         holder.mtextview1.setText(currentitem.getMtext1());
         holder.mtextview2.setText(currentitem.getMtext2());
@@ -68,6 +72,6 @@ public class inquirynotificationadapter extends RecyclerView.Adapter<inquirynoti
 
     @Override
     public int getItemCount() {
-        return incardlist.size();
+        return lncardlist.size();
     }
 }

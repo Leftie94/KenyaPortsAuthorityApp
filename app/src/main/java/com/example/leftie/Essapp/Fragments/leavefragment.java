@@ -1,4 +1,4 @@
-package com.example.leftie.Essapp;
+package com.example.leftie.Essapp.Fragments;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -22,7 +22,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.leftie.Essapp.Leave;
 import com.example.leftie.Essapp.R;
+import com.example.leftie.Essapp.leave_notifications;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

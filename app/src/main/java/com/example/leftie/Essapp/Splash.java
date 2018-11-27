@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import com.example.leftie.Essapp.Login.login;
+
 public class Splash extends AppCompatActivity {
 
     private final int SPLASH_TIME_OUT = 2500;

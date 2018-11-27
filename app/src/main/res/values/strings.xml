@@ -11,31 +11,20 @@
     </string-array>
 
     <string-array name="gender">
+        <item>--choose--</item>
         <item>Male</item>
         <item>Female</item>>
     </string-array>
 
-    <string-array name="maritalstatus">
-        <item>Single</item>
-        <item>Married</item>>
-        <item>Divorced</item>>
-        <item>Widow</item>>
-        <item>Widower</item>>
+    <string-array name="department">
+        <item>--choose--</item>
+        <item>HR</item>
+        <item>Finance</item>
+        <item>I.T</item>
+        <item>Corporate Affairs</item>
     </string-array>
 
-    <string-array name="noofchildren">
-        <item>1</item>
-        <item>2</item>>
-        <item>3</item>>
-        <item>4</item>>
-        <item>5</item>>
-        <item>6</item>>
-        <item>7</item>>
-        <item>8</item>>
-        <item>9</item>>
-        <item>10</item>>
 
-    </string-array>
 
 
 </resources>

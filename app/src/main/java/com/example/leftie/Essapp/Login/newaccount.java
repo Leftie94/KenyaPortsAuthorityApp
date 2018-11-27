@@ -1,4 +1,4 @@
-package com.example.leftie.Essapp;
+package com.example.leftie.Essapp.Login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.leftie.Essapp.home;
+import com.example.leftie.Essapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -37,7 +39,6 @@ public class newaccount extends AppCompatActivity {
         FireAuth = FirebaseAuth.getInstance();
         databaseReference= FirebaseDatabase.getInstance().getReference("Users");
 
-
     }
 
     public void signup_click(View view) {
@@ -54,7 +55,7 @@ public class newaccount extends AppCompatActivity {
                 if (task.isSuccessful()){
 
                     Toast.makeText(newaccount.this, "Registration Successful!!! ", Toast.LENGTH_LONG).show();
-                    Intent i = new Intent(newaccount.this, Home.class);
+                    Intent i = new Intent(newaccount.this, home.class);
                     startActivity(i);
 
                     String user_id=FireAuth.getCurrentUser().getUid();

@@ -1,5 +1,6 @@
-package com.example.leftie.Essapp;
+package com.example.leftie.Essapp.Login;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -11,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.leftie.Essapp.home;
+import com.example.leftie.Essapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,16 +24,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
 public class login extends AppCompatActivity {
 
     Button signbtn;
     EditText email,password;
     private FirebaseAuth fireauth;
     private DatabaseReference databaseReference;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,62 +43,63 @@ public class login extends AppCompatActivity {
         fireauth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
 
+        final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Input Values");
+        dialog.setMessage("Input Values");
+        dialog.setCancelable(true);
 
-
+        Button next = findViewById(R.id.btnNxt);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),home.class));
+            }
+        });
+        signbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (email.getText().toString().equals("")){
+                    dialog.show();
+                }else if (password.getText().toString().equals("")){
+                    dialog.show();
+                }else {
+                    signin_click(v);
+                }
+            }
+        });
     }
-
     public void signin_click(View view){
-
-
 
         final ProgressDialog progressDialog = ProgressDialog.show(login.this, "Please wait...", "Processing...", true);
         (fireauth.signInWithEmailAndPassword(email.getText().toString(),password.getText().toString())).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressDialog.dismiss();
-
                 if (task.isSuccessful()) {
 
                     Toast.makeText(login.this, "Login Successful!!! ", Toast.LENGTH_LONG).show();
-                    Intent i = new Intent(login.this, Home.class);
+                    Intent i = new Intent(login.this, home.class);
                     startActivity(i);
                     finish();
                     overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                     checkUserExist();
-                    email.getText().clear();
-                    password.getText().clear();
 
-
-                }
-
-
-                else{
-
+                } else{
                     Log.e("ERROR",task.getException().toString());
                     Toast.makeText(login.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-
-                }
-
-
-
+                    }
             }
 
         });
-
-
-
-
     }
-
     //checks if User exists in the database
-
     public void checkUserExist(){
         final String user_id=fireauth.getCurrentUser().getUid();
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChild(user_id)){
-                    Intent logintInt=new Intent(login.this,Home.class );
+                    Intent logintInt=new Intent(login.this,home.class );
                     startActivity(logintInt);
                 }
             }
@@ -111,22 +111,13 @@ public class login extends AppCompatActivity {
         });
     }
 
-
-
-
-
-
-
     public void newaccount_click(View view){
 
         Intent i = new Intent(login.this, newaccount.class);
         startActivity(i);
     }
-
     public void resetpassword_click(View view){
 
         Intent i = new Intent(login.this, resetpassword.class);
     }
-
-
 }

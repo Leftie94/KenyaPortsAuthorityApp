@@ -1,10 +1,13 @@
-package com.example.leftie.Essapp;
+package com.example.leftie.Essapp.Adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.leftie.Essapp.R;
+import com.example.leftie.Essapp.carditems;
 
 import java.util.ArrayList;
 

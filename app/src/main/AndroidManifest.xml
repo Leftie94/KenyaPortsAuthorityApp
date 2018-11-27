@@ -20,11 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login" />
-        <activity android:name=".Home" />
+        <activity android:name=".Login.login" />
+        <activity android:name=".home" />
         <activity android:name=".personalinfo" />
-        <activity android:name=".newaccount" />
-        <activity android:name=".resetpassword" />
+        <activity android:name=".Login.newaccount" />
+        <activity android:name=".Login.resetpassword" />
         <activity android:name=".inquiry_notifications" />
         <activity android:name=".leave_notifications" />
         <activity android:name=".aboutus" />
