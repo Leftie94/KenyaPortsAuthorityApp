@@ -28,8 +28,6 @@
         <activity android:name=".inquiry_notifications" />
         <activity android:name=".leave_notifications" />
         <activity android:name=".aboutus" />
-        <activity android:name=".inquirynotficationmsg" />
-        <activity android:name=".leavenotificationmsg"></activity>
     </application>
 
 </manifest>

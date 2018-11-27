@@ -24,24 +24,17 @@ public class leave_notifications extends AppCompatActivity {
 
 
         final ArrayList<carditems> cardlist = new ArrayList<>();
-        cardlist.add(new carditems("Line 1","Line 2"));
+        cardlist.add(new carditems("Leave Requested","Confirmed","Leo ni leo"));
+        cardlist.add(new carditems("Leave Requested","Pending","Leo ni leo"));
 
         leaverecyclerview = findViewById(R.id.leavenotificationrecycler);
         leaverecyclerview.setHasFixedSize(true);
-        leavelayoutManager = new LinearLayoutManager(this);
+        leavelayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         leaveadapter = new leavenotificationsadapter(cardlist);
         leaverecyclerview.setLayoutManager(leavelayoutManager);
         leaverecyclerview.setAdapter(leaveadapter);
 
 
-        leaveadapter.setOnItemClickListener(new leavenotificationsadapter.OnItemClickListener() {
-            @Override
-            public void OnItemClick(int position) {
-                Intent i = new Intent(leave_notifications.this, leavenotificationmsg.class);
-                startActivity(i);
-
-            }
-        });
 
 
     }

@@ -22,7 +22,8 @@ public class inquiry_notifications extends AppCompatActivity {
         setContentView(R.layout.activity_inquiry_notifications);
 
         ArrayList<carditems> cardlist = new ArrayList<>();
-        cardlist.add(new carditems("Line 1","Line 2"));
+        cardlist.add(new carditems("Request Confirmation","Confirmed","Leo ni leo"));
+        cardlist.add(new carditems("Request Confirmation","Pending","Leo ni leo"));
 
         inquiryrecyclerview = findViewById(R.id.inquirynotificationrecycler);
         inquiryrecyclerview.setHasFixedSize(true);
@@ -31,15 +32,6 @@ public class inquiry_notifications extends AppCompatActivity {
         inquiryrecyclerview.setLayoutManager(inquirylayoutManager);
         inquiryrecyclerview.setAdapter(inquiryadapter);
 
-
-        inquiryadapter.setOnItemClickListener(new inquirynotificationadapter.OnItemClickListener() {
-            @Override
-            public void OnItemClick(int position) {
-                Intent i = new Intent(inquiry_notifications.this, inquirynotficationmsg.class);
-                startActivity(i);
-
-            }
-        });
 
     }
 

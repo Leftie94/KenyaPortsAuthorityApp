@@ -1,10 +1,16 @@
 package com.example.leftie.Essapp.Adapters;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.leftie.Essapp.R;
 import com.example.leftie.Essapp.carditems;
@@ -13,8 +19,9 @@ import java.util.ArrayList;
 
 public class feedadapter extends RecyclerView.Adapter<feedadapter.cardholder> {
     private ArrayList<carditems> fcardlist;
+    Context context;
     private OnItemClickListener feedlistener;
-
+    AlertDialog.Builder dialog;
     public interface OnItemClickListener{
         void OnItemClick(int position);
     }
@@ -49,9 +56,11 @@ public class feedadapter extends RecyclerView.Adapter<feedadapter.cardholder> {
         }
     }
 
-    public feedadapter(ArrayList<carditems> cardlist){
+    public feedadapter(Context context,ArrayList<carditems> cardlist){
+        context = context;
         fcardlist = cardlist;
 
+        dialog = new AlertDialog.Builder(context);
     }
 
     @Override
@@ -62,12 +71,23 @@ public class feedadapter extends RecyclerView.Adapter<feedadapter.cardholder> {
     }
 
     @Override
-    public void onBindViewHolder(cardholder holder, int position) {
-        carditems currentitem = fcardlist.get(position);
+    public void onBindViewHolder(final cardholder holder, final int position) {
+        final carditems currentitem = fcardlist.get(position);
 
         holder.mtextview1.setText(currentitem.getMtext1());
         holder.mtextview2.setText(currentitem.getMtext2());
-
+        holder.mtextview1.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
+            @Override
+            public void onClick(View view) {
+                //dialog = new AlertDialog.Builder(new ContextThemeWrapper(context,R.style.AppTheme));
+                //dialog.setCancelable(true);
+                dialog.setTitle(currentitem.getMtext2());
+                dialog.setMessage(currentitem.getmMessage());
+                dialog.show();
+                //Toast.makeText(context,"Load",Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
