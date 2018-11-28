@@ -80,8 +80,7 @@ public class feedadapter extends RecyclerView.Adapter<feedadapter.cardholder> {
             @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view) {
-                //dialog = new AlertDialog.Builder(new ContextThemeWrapper(context,R.style.AppTheme));
-                //dialog.setCancelable(true);
+                dialog.setCancelable(true);
                 dialog.setTitle(currentitem.getMtext2());
                 dialog.setMessage(currentitem.getmMessage());
                 dialog.show();
