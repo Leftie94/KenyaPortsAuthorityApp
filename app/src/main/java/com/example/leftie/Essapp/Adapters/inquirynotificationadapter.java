@@ -1,5 +1,8 @@
 package com.example.leftie.Essapp.Adapters;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +17,8 @@ import java.util.ArrayList;
 public class inquirynotificationadapter extends RecyclerView.Adapter<inquirynotificationadapter.cardholder> {
     private ArrayList<carditems> incardlist;
     private OnItemClickListener inquirynotificationlistener;
-
+    AlertDialog.Builder dialog;
+    Context context;
     public interface OnItemClickListener{
         void OnItemClick(int position);
     }
@@ -47,9 +51,10 @@ public class inquirynotificationadapter extends RecyclerView.Adapter<inquirynoti
         }
     }
 
-    public inquirynotificationadapter(ArrayList<carditems> cardlist){
+    public inquirynotificationadapter(Context context,ArrayList<carditems> cardlist){
+        context = context;
         incardlist = cardlist;
-
+        dialog = new AlertDialog.Builder(context,R.style.Theme_AppCompat_DayNight_Dialog_Alert);
     }
 
 
@@ -62,11 +67,26 @@ public class inquirynotificationadapter extends RecyclerView.Adapter<inquirynoti
 
     @Override
     public void onBindViewHolder(cardholder holder, int position) {
-        carditems currentitem = incardlist.get(position);
+        final carditems currentitem = incardlist.get(position);
 
         holder.mtextview1.setText(currentitem.getMtext1());
         holder.mtextview2.setText(currentitem.getMtext2());
-
+        holder.mtextview1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.setIcon(R.mipmap.ic_launcher);
+                dialog.setCancelable(false);
+                dialog.setTitle(currentitem.getMtext2());
+                dialog.setMessage(currentitem.getmMessage());
+                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+            }
+        });
     }
 
     @Override

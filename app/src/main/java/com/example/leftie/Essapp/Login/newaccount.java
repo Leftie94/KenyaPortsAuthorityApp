@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,11 +44,33 @@ public class newaccount extends AppCompatActivity {
 
     public void signup_click(View view) {
 
-        final String username=newemail.getText().toString().trim();
+        final String email=newemail.getText().toString().trim();
         final String password=newpass.getText().toString().trim();
 
+
+        if (email.isEmpty()){
+            newemail.setError("Email is Required");
+            newemail.requestFocus();
+            return;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            newemail.setError("Please Enter Valid Email");
+            newemail.requestFocus();
+            return;
+        }
+        if (password.isEmpty()){
+            newpass.setError("Password is Required");
+            newpass.requestFocus();
+            return;
+        }
+        if (password.length()<6){
+            newpass.setError("Minimum length should be 6 characters");
+            newpass.requestFocus();
+            return;
+        }
         final ProgressDialog progressDialog = ProgressDialog.show(newaccount.this, "Please wait...", "Processing...", true);
-        (FireAuth.createUserWithEmailAndPassword(username ,password )).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        (FireAuth.createUserWithEmailAndPassword(email ,password )).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressDialog.dismiss();
@@ -60,7 +83,7 @@ public class newaccount extends AppCompatActivity {
 
                     String user_id=FireAuth.getCurrentUser().getUid();
                     DatabaseReference current_user_db=databaseReference.child(user_id);
-                    current_user_db.child("Name").setValue(username);
+                    current_user_db.child("Name").setValue(email);
 
                 }
                 else {

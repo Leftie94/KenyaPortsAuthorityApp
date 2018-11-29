@@ -22,13 +22,13 @@ public class inquiry_notifications extends AppCompatActivity {
         setContentView(R.layout.activity_inquiry_notifications);
 
         ArrayList<carditems> cardlist = new ArrayList<>();
-        cardlist.add(new carditems("Request Confirmation","Confirmed","Leo ni leo"));
-        cardlist.add(new carditems("Request Confirmation","Pending","Leo ni leo"));
+        cardlist.add(new carditems("Request Confirmation","Confirmed","Your Request for ??? has been Approved"));
+        cardlist.add(new carditems("Request Confirmation","Pending","Waiting for approval"));
 
         inquiryrecyclerview = findViewById(R.id.inquirynotificationrecycler);
         inquiryrecyclerview.setHasFixedSize(true);
         inquirylayoutManager = new LinearLayoutManager(this);
-        inquiryadapter = new inquirynotificationadapter(cardlist);
+        inquiryadapter = new inquirynotificationadapter(this,cardlist);
         inquiryrecyclerview.setLayoutManager(inquirylayoutManager);
         inquiryrecyclerview.setAdapter(inquiryadapter);
 

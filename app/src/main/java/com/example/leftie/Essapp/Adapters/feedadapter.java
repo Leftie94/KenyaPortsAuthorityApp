@@ -3,6 +3,7 @@ package com.example.leftie.Essapp.Adapters;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.RecyclerView;
@@ -60,7 +61,7 @@ public class feedadapter extends RecyclerView.Adapter<feedadapter.cardholder> {
         context = context;
         fcardlist = cardlist;
 
-        dialog = new AlertDialog.Builder(context);
+        dialog = new AlertDialog.Builder(context,R.style.Theme_AppCompat_DayNight_Dialog_Alert);
     }
 
     @Override
@@ -77,14 +78,19 @@ public class feedadapter extends RecyclerView.Adapter<feedadapter.cardholder> {
         holder.mtextview1.setText(currentitem.getMtext1());
         holder.mtextview2.setText(currentitem.getMtext2());
         holder.mtextview1.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view) {
-                dialog.setCancelable(true);
+                dialog.setIcon(R.mipmap.ic_launcher);
+                dialog.setCancelable(false);
                 dialog.setTitle(currentitem.getMtext2());
                 dialog.setMessage(currentitem.getmMessage());
+                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                      dialog.dismiss();
+                    }
+                });
                 dialog.show();
-                //Toast.makeText(context,"Load",Toast.LENGTH_LONG).show();
             }
         });
     }

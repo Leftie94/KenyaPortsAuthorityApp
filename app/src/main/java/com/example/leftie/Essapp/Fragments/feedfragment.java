@@ -52,15 +52,15 @@ public class feedfragment extends Fragment {
            setHasOptionsMenu(true);
 
         cardlist = new ArrayList<>();
-        cardlist.add(new carditems("HR DEPARTMENT","News HR","Leo ni leo"));
+        cardlist.add(new carditems(getResources().getString(R.string.app_name),"News HR","Leo ni leo"));
+        cardlist.add(new carditems("I.T DEPARTMENT","News I.T",getResources().getString(R.string.IT)));
+        cardlist.add(new carditems("Finance DEPARTMENT","News additions",getResources().getString(R.string.Finance)));
+        cardlist.add(new carditems("Corporate DEPARTMENT","News Corporate",getResources().getString(R.string.Corporate)));
         cardlist.add(new carditems("I.T DEPARTMENT","News I.T","Leo ni I.T"));
-        cardlist.add(new carditems("Finance DEPARTMENT","News additions","Leo ni leo"));
-        cardlist.add(new carditems("Corporate DEPARTMENT","News Corporate","Leo ni leo"));
-        cardlist.add(new carditems("I.T DEPARTMENT","News I.T","Leo ni I.T"));
         cardlist.add(new carditems("HR DEPARTMENT","News HR","Leo ni leo"));
         cardlist.add(new carditems("Finance DEPARTMENT","News additions","Leo ni leo"));
         cardlist.add(new carditems("HR DEPARTMENT","News HR","Leo ni leo"));
-        cardlist.add(new carditems("Corporate DEPARTMENT","News Corporate","Leo ni leo"));
+        cardlist.add(new carditems("Corporate DEPARTMENT","News Corporate",getResources().getString(R.string.Corporate_)));
         cardlist.add(new carditems("I.T DEPARTMENT","News I.T","Leo ni I.T"));
         cardlist.add(new carditems("HR DEPARTMENT","News HR","Leo ni leo"));
         cardlist.add(new carditems("Finance DEPARTMENT","News additions","Leo ni leo"));
