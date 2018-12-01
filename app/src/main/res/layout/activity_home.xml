@@ -7,6 +7,12 @@
     tools:context=".home"
     tools:layout_editor_absoluteY="81dp">
 
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom_navigation"/>
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -18,10 +24,5 @@
         app:menu="@menu/bottom_nav"
         android:background="?android:attr/windowBackground"/>
 
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_navigation"/>
 
 </android.support.constraint.ConstraintLayout>

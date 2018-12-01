@@ -1,29 +1,31 @@
 package com.example.leftie.Essapp.Fragments;
 
-import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.leftie.Essapp.Adapters.feedadapter;
+import com.example.leftie.Essapp.Models.ViewHolder;
 import com.example.leftie.Essapp.R;
 import com.example.leftie.Essapp.aboutus;
-import com.example.leftie.Essapp.carditems;
+import com.example.leftie.Essapp.Models.Upload;
 import com.example.leftie.Essapp.Login.login;
-import com.example.leftie.Essapp.feed;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -36,71 +38,101 @@ import java.util.ArrayList;
 
 public class feedfragment extends Fragment {
 
-    private RecyclerView mrecyclerview;
-    private feedadapter madapter;
-    private RecyclerView.LayoutManager mlayoutManager;
-    private FirebaseAuth firebaseAuth;
-    private DatabaseReference feeddatabase;
+    private RecyclerView mRecyclerView;
+    private feedadapter mAdapter;
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabaseRef;
     private ValueEventListener mDBListener;
-    private Activity mView;
-    ArrayList<carditems> cardlist;
-
+    private ProgressBar mProgressCircle;
+    ArrayList<Upload> cardList;
+    AlertDialog.Builder dialog;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
            View view = inflater.inflate(R.layout.feed_fragment, container, false);
            setHasOptionsMenu(true);
 
-        cardlist = new ArrayList<>();
-        cardlist.add(new carditems(getResources().getString(R.string.app_name),"News HR","Leo ni leo"));
-        cardlist.add(new carditems("I.T DEPARTMENT","News I.T",getResources().getString(R.string.IT)));
-        cardlist.add(new carditems("Finance DEPARTMENT","News additions",getResources().getString(R.string.Finance)));
-        cardlist.add(new carditems("Corporate DEPARTMENT","News Corporate",getResources().getString(R.string.Corporate)));
-        cardlist.add(new carditems("I.T DEPARTMENT","News I.T","Leo ni I.T"));
-        cardlist.add(new carditems("HR DEPARTMENT","News HR","Leo ni leo"));
-        cardlist.add(new carditems("Finance DEPARTMENT","News additions","Leo ni leo"));
-        cardlist.add(new carditems("HR DEPARTMENT","News HR","Leo ni leo"));
-        cardlist.add(new carditems("Corporate DEPARTMENT","News Corporate",getResources().getString(R.string.Corporate_)));
-        cardlist.add(new carditems("I.T DEPARTMENT","News I.T","Leo ni I.T"));
-        cardlist.add(new carditems("HR DEPARTMENT","News HR","Leo ni leo"));
-        cardlist.add(new carditems("Finance DEPARTMENT","News additions","Leo ni leo"));
-        cardlist.add(new carditems("HR DEPARTMENT","News HR","Leo ni leo"));
-        cardlist.add(new carditems("Corporate DEPARTMENT","News Corporate","Leo ni leo"));
+        cardList = new ArrayList<>();
+        dialog = new AlertDialog.Builder(getActivity(),R.style.Theme_AppCompat_DayNight_Dialog_Alert);
+        dialog.setIcon(R.mipmap.ic_launcher);
+        dialog.setCancelable(false);
+        /*cardList.add(new Upload(getResources().getString(R.string.app_name),"News HR","Leo ni leo"));
+        cardList.add(new Upload("I.T DEPARTMENT","News I.T",getResources().getString(R.string.IT)));
+        cardList.add(new Upload("Finance DEPARTMENT","News additions",getResources().getString(R.string.Finance)));
+        cardList.add(new Upload("Corporate DEPARTMENT","News Corporate",getResources().getString(R.string.Corporate)));
+        cardList.add(new Upload("I.T DEPARTMENT","News I.T","Leo ni I.T"));
+        cardList.add(new Upload("HR DEPARTMENT","News HR","Leo ni leo"));
+        cardList.add(new Upload("Finance DEPARTMENT","News additions","Leo ni leo"));
+        cardList.add(new Upload("HR DEPARTMENT","News HR","Leo ni leo"));
+        cardList.add(new Upload("Corporate DEPARTMENT","News Corporate",getResources().getString(R.string.Corporate_)));
+        cardList.add(new Upload("I.T DEPARTMENT","News I.T","Leo ni I.T"));
+        cardList.add(new Upload("HR DEPARTMENT","News HR","Leo ni leo"));
+        cardList.add(new Upload("Finance DEPARTMENT","News additions","Leo ni leo"));
+        cardList.add(new Upload("HR DEPARTMENT","News HR","Leo ni leo"));
+        cardList.add(new Upload("Corporate DEPARTMENT","News Corporate","Leo ni leo"));*/
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        feeddatabase = FirebaseDatabase.getInstance().getReference("FEED DATA");
-        feeddatabase.keepSynced(true);
+        mAuth = FirebaseAuth.getInstance();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference().child("FEED DATA");
+        mDatabaseRef.keepSynced(true);
 
-        mrecyclerview = view.findViewById(R.id.myrecycler);
-        mrecyclerview.setHasFixedSize(true);
-        mlayoutManager = new LinearLayoutManager(this.getActivity(),LinearLayoutManager.VERTICAL,false);
-        madapter = new feedadapter(getActivity(),cardlist);
-        mrecyclerview.setLayoutManager(mlayoutManager);
-        mrecyclerview.setAdapter(madapter);
+        mRecyclerView = view.findViewById(R.id.myrecycler);
+        mRecyclerView.setHasFixedSize(true);
+        mAdapter = new feedadapter(getActivity(), cardList);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity(),LinearLayoutManager.VERTICAL,false));
+        mRecyclerView.setAdapter(mAdapter);
 
-
-        madapter.setOnItemClickListener(new feedadapter.OnItemClickListener() {
+        mProgressCircle = view.findViewById(R.id.progress_circle);
+        mAdapter.setOnItemClickListener(new feedadapter.OnItemClickListener() {
             @Override
             public void OnItemClick(int position) {
+                Toast.makeText(getActivity(), "Adapter Click", Toast.LENGTH_SHORT).show();
             }
         });
-        /*mDBListener = feeddatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                 cardlist.clear();
+        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), mRecyclerView, new ClickListener() {
 
-                 /*for (DataSnapshot post  : dataSnapshot.getChildren()){
-                     carditems items = post.getValue(carditems.class);
-                     items.setKey(post.getKey());
-                     cardlist.add(items);
-                 }
+            @Override
+            public void onClick(View view, int position) {
+                final Upload item = cardList.get(position);
+                dialog.setTitle(item.getTitle());
+                dialog.setMessage(item.getMessage());
+                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.show();
+                Toast.makeText(getActivity(), "Single Click", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getActivity(),databaseError.getMessage(),Toast.LENGTH_LONG).show();
+            public void onLongClick(View view, int position) {
+                Toast.makeText(getActivity(), "LONG CLICK\n" , Toast.LENGTH_SHORT).show();
             }
-        });*/
+        }));
+        mDBListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                cardList.clear();
+
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    Upload upload = postSnapshot.getValue(Upload.class);
+                    upload.setKey(postSnapshot.getKey());
+                    cardList.add(upload);
+                }
+
+                mAdapter.notifyDataSetChanged();
+
+                mProgressCircle.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getActivity(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                mProgressCircle.setVisibility(View.INVISIBLE);
+            }
+        });
         return view ;
 
     }
@@ -108,45 +140,73 @@ public class feedfragment extends Fragment {
     @Override
     public void onStart() {
        super.onStart();
-        /*FirebaseRecyclerAdapter<feed,feedViewHolder> FirebaseRecyclerAdapter = new FirebaseRecyclerAdapter<feed, feedViewHolder>
-                (feed.class,R.layout.feed_cardview,feedViewHolder.class,feeddatabase) {
-            @Override
-            protected void populateViewHolder(feedViewHolder viewHolder, feed model, int position) {
+        FirebaseRecyclerAdapter<Upload,ViewHolder> firebaseRecyclerAdapter =
+                new FirebaseRecyclerAdapter<Upload, ViewHolder>(
+                        Upload.class,
+                        R.layout.feed_cardview,
+                        ViewHolder.class,
+                        mDatabaseRef
+                ) {
+                    @Override
+                    protected void populateViewHolder(ViewHolder viewHolder, Upload model, int position) {
+                        viewHolder.setDetails(getActivity(),model.getTitle(),model.getSubtitle(),model.getMessage());
+                    }
 
-                viewHolder.settitle(model.getTitle());
-                viewHolder.setsubtitle(model.getSub_title());
-            }
-        };
-
-        mrecyclerview.setAdapter(FirebaseRecyclerAdapter);*/
-
+                };
+        mRecyclerView.setAdapter(firebaseRecyclerAdapter);
 
     }
 
-    /*public static class feedViewHolder extends RecyclerView.ViewHolder{
 
-        View mView;
-        public feedViewHolder(View itemView){
+    public interface ClickListener {
+        void onClick(View view, int position);
 
-            super(itemView);
-            mView = itemView;
+        void onLongClick(View view, int position);
+    }
+
+    static class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
+
+        private GestureDetector gestureDetector;
+        private ClickListener clickListener;
+
+        public RecyclerTouchListener(Context context, final RecyclerView recyclerView, final ClickListener clickListener) {
+            this.clickListener = clickListener;
+            gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
+                    return true;
+                }
+
+                @Override
+                public void onLongPress(MotionEvent e) {
+                    View child = recyclerView.findChildViewUnder(e.getX(), e.getY());
+                    if (child != null && clickListener != null) {
+                        clickListener.onLongClick(child, recyclerView.getChildPosition(child));
+                    }
+                }
+            });
+        }
+        @Override
+        public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+
+            View child = rv.findChildViewUnder(e.getX(), e.getY());
+            if (child != null && clickListener != null && gestureDetector.onTouchEvent(e)) {
+                clickListener.onClick(child, rv.getChildPosition(child));
+            }
+            return false;
+        }
+
+        @Override
+        public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+        }
+
+        @Override
+        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
         }
 
 
-        public void settitle(String Title){
-
-            TextView post_title = (TextView)mView.findViewById(R.id.txttitle);
-            post_title.setText(Title);
-        }
-
-        public void setsubtitle(String Sub_title){
-
-            TextView post_title = (TextView)mView.findViewById(R.id.txtsubtitle);
-            post_title.setText(Sub_title);
-        }
-
-
-    }*/
+    }
 
 
     // Inflate the menu; this adds items to the action bar.
@@ -163,7 +223,7 @@ public class feedfragment extends Fragment {
             case R.id.refresh:
                 return true;
             case R.id.signout:
-                firebaseAuth.signOut();
+                mAuth.signOut();
                 Intent i = new Intent(getActivity(),login.class);
                 startActivity(i);
                 return true;
@@ -177,7 +237,11 @@ public class feedfragment extends Fragment {
         }
 
     }
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mDatabaseRef.removeEventListener(mDBListener);
+    }
 
 }
 

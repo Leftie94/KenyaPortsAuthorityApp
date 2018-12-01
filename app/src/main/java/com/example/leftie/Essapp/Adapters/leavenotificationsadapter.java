@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.leftie.Essapp.R;
-import com.example.leftie.Essapp.carditems;
+import com.example.leftie.Essapp.Models.Upload;
 
 import java.util.ArrayList;
 
 public class leavenotificationsadapter extends RecyclerView.Adapter<leavenotificationsadapter.cardholder> {
-    private ArrayList<carditems> lncardlist;
+    private ArrayList<Upload> lncardlist;
     private OnItemClickListener leavenotificationlistener;
     AlertDialog.Builder dialog;
     Context context;
@@ -53,7 +53,7 @@ public class leavenotificationsadapter extends RecyclerView.Adapter<leavenotific
         }
     }
 
-    public leavenotificationsadapter(Context context, ArrayList<carditems> cardlist){
+    public leavenotificationsadapter(Context context, ArrayList<Upload> cardlist){
         context = context;
         lncardlist = cardlist;
         dialog = new AlertDialog.Builder(context,R.style.Theme_AppCompat_DayNight_Dialog_Alert);
@@ -69,17 +69,17 @@ public class leavenotificationsadapter extends RecyclerView.Adapter<leavenotific
 
     @Override
     public void onBindViewHolder(cardholder holder, int position) {
-        final carditems currentitem = lncardlist.get(position);
+        final Upload currentitem = lncardlist.get(position);
 
-        holder.mtextview1.setText(currentitem.getMtext1());
-        holder.mtextview2.setText(currentitem.getMtext2());
+        holder.mtextview1.setText(currentitem.getTitle());
+        holder.mtextview2.setText(currentitem.getSubtitle());
         holder.mtextview1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.setIcon(R.mipmap.ic_launcher);
                 dialog.setCancelable(false);
-                dialog.setTitle(currentitem.getMtext2());
-                dialog.setMessage(currentitem.getmMessage());
+                dialog.setTitle(currentitem.getTitle());
+                dialog.setMessage(currentitem.getMessage());
                 dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

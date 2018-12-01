@@ -1,12 +1,12 @@
 package com.example.leftie.Essapp;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.leftie.Essapp.Adapters.leavenotificationsadapter;
+import com.example.leftie.Essapp.Models.Upload;
 
 import java.util.ArrayList;
 
@@ -23,9 +23,9 @@ public class leave_notifications extends AppCompatActivity {
 
 
 
-        final ArrayList<carditems> cardlist = new ArrayList<>();
-        cardlist.add(new carditems("Leave Request","Confirmed","Your Leave Request has been Approved"));
-        cardlist.add(new carditems("Leave Request","Pending","Waiting for approval"));
+        final ArrayList<Upload> cardlist = new ArrayList<>();
+        cardlist.add(new Upload("Leave Request","Confirmed","Your Leave Request has been Approved"));
+        cardlist.add(new Upload("Leave Request","Pending","Waiting for approval"));
 
         leaverecyclerview = findViewById(R.id.leavenotificationrecycler);
         leaverecyclerview.setHasFixedSize(true);

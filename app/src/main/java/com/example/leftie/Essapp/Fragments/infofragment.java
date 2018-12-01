@@ -32,7 +32,7 @@ import static android.widget.Toast.LENGTH_LONG;
 
 public class infofragment extends Fragment {
 
-    EditText firstname, secondname, thirdname, dob, telno, mailbox, city, myemail;
+    EditText firstname, secondname, dob, telno, mailbox, city, myemail;
     Spinner gender;
     Button applychanges;
     DatabaseReference databasepersonalinfo;
@@ -49,7 +49,6 @@ public class infofragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         firstname = view.findViewById(R.id.editname1);
         secondname = view.findViewById(R.id.editname2);
-        thirdname = view.findViewById(R.id.editname3);
         dob = view.findViewById(R.id.editdob);
         gender = view.findViewById(R.id.genderspinner);
         telno = view.findViewById(R.id.edittel);

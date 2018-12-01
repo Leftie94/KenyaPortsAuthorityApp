@@ -1,12 +1,12 @@
 package com.example.leftie.Essapp;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.leftie.Essapp.Adapters.inquirynotificationadapter;
+import com.example.leftie.Essapp.Models.Upload;
 
 import java.util.ArrayList;
 
@@ -21,9 +21,9 @@ public class inquiry_notifications extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inquiry_notifications);
 
-        ArrayList<carditems> cardlist = new ArrayList<>();
-        cardlist.add(new carditems("Request Confirmation","Confirmed","Your Request for ??? has been Approved"));
-        cardlist.add(new carditems("Request Confirmation","Pending","Waiting for approval"));
+        ArrayList<Upload> cardlist = new ArrayList<>();
+        cardlist.add(new Upload("Request Confirmation","Confirmed","Your Request for ??? has been Approved"));
+        cardlist.add(new Upload("Request Confirmation","Pending","Waiting for approval"));
 
         inquiryrecyclerview = findViewById(R.id.inquirynotificationrecycler);
         inquiryrecyclerview.setHasFixedSize(true);
