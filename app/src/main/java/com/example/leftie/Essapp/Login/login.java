@@ -30,7 +30,7 @@ public class login extends AppCompatActivity {
     EditText email,password;
     private FirebaseAuth fireauth;
     private DatabaseReference databaseReference;
-
+    AlertDialog.Builder dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +43,8 @@ public class login extends AppCompatActivity {
         fireauth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
 
-        final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog = new AlertDialog.Builder(this);
+        dialog.setIcon(R.mipmap.ic_launcher);
         dialog.setTitle("Input Values");
         dialog.setMessage("Input Values");
         dialog.setCancelable(true);
@@ -85,8 +86,10 @@ public class login extends AppCompatActivity {
                     checkUserExist();
 
                 } else{
+                    dialog.setMessage("There is no user record corresponding to this identifier");
+                    dialog.show();
                     Log.e("ERROR",task.getException().toString());
-                    Toast.makeText(login.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(login.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
             }
 
