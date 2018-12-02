@@ -16,17 +16,11 @@ import java.util.ArrayList;
 
 public class feedadapter extends RecyclerView.Adapter<feedadapter.cardholder> {
     private ArrayList<Upload> fcardlist;
-    Context context;
     private OnItemClickListener feedlistener;
     AlertDialog.Builder dialog;
     public interface OnItemClickListener{
         void OnItemClick(int position);
     }
-
-    public void setOnItemClickListener(OnItemClickListener listener){
-        feedlistener = listener;
-    }
-
 
     public static class cardholder extends RecyclerView.ViewHolder{
         public TextView mtextview1, mtextview2;
@@ -36,28 +30,12 @@ public class feedadapter extends RecyclerView.Adapter<feedadapter.cardholder> {
             mtextview1 = itemView.findViewById(R.id.txttitle);
             mtextview2 = itemView.findViewById(R.id.txtsubtitle);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    if(listener !=null){
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION){
-                            listener.OnItemClick(position);
-                        }
-                    }
-
-                }
-            });
-
         }
     }
 
-    public feedadapter(Context context,ArrayList<Upload> cardlist){
-        context = context;
+    public feedadapter(ArrayList<Upload> cardlist){
         fcardlist = cardlist;
 
-        dialog = new AlertDialog.Builder(context,R.style.Theme_AppCompat_DayNight_Dialog_Alert);
     }
 
     @Override
@@ -73,22 +51,6 @@ public class feedadapter extends RecyclerView.Adapter<feedadapter.cardholder> {
 
         holder.mtextview1.setText(currentitem.getTitle());
         holder.mtextview2.setText(currentitem.getSubtitle());
-        holder.mtextview1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.setIcon(R.mipmap.ic_launcher);
-                dialog.setCancelable(false);
-                dialog.setTitle(currentitem.getTitle());
-                dialog.setMessage(currentitem.getMessage());
-                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                      dialog.dismiss();
-                    }
-                });
-                dialog.show();
-            }
-        });
     }
 
     @Override

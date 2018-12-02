@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ess App</string>
+    <string name="app_name">Kenya Ports Authority</string>
 
     <string-array name="leavetype">
         <item>--Select appropriate--</item>
@@ -23,61 +23,12 @@
         <item>I.T</item>
         <item>Corporate Affairs</item>
     </string-array>
-    <string name="Corporate_">
-    Dear Daystar Community,
 
-
-    The Launch of the School of Law is Here.  The Day is tomorrow 14th November 2018 with over 400 Guests  invited and expected.
-
-
-    The Launch event will take place at the DAC Auditorium from 2:00 PM and will feature both indoor and outdoor activities.
-
-
-    As such, the total space within the Valley Road Campus has been reserved for the Launch event.  For this reason, the University community is advised to park along the Green Lane and the Nairobi Baptist Church tomorrow.
-
-
-    Our Guest of Honour, His Lordship the Chief Justice, Hon. David Kenani Maraga, EHG, is looking forward to be at Daystar University tomorrow.
-
-
-    Other invited guests include the Judiciary, members of the legal fraternity, other Law Schools, Daystar Company, the University Council, former Taskforce, the Senate, Management and representatives of students, faculty and staff.
-
-
-    We thank you all for your cooperation as you release parking space at the Valley Road campus.
-
-
-    Sincerely,
-
-    Corporate Affairs Manager.</string>
-
-    <string name="Corporate">We are grateful to community members who have responded to the appeal for blood by University Council Member, Mrs. Lilian Ogolla.
-
-
-    Those still planning to cross over to KNH to donate blood are advised to pick an identification note from our Customer Care Desk at Valley Road  Campus.
-
-
-    The patient, Ruth Anyango Bladden, is at KNH Critical Care Unit.
-
-
-    Damaris Kimilu
-
-    Corporate Affairs Dept.</string>
-
-    <string name="IT"> The School of Science Engineering and Health on 17th October 2018 held an interactive Talk on The 4th Industrial Revolution and Artificial Robotics at the Athi River campus ICT Theatre. The Talk was facilitated by Swift Robotics &amp; A.I Enterprise...</string>
-
-    <string name="Finance">SUBJECT: COURSE SELECTION AND CLASS ATTENDANCE
-
-    Greetings.
-
-    I write to urge all students who have already selected courses for the August semester, but are yet to pay fees, to URGENTLY visit the Finance Office and make arrangements for their continued class attendance.  The Finance Office shall remain open throughout tomorrow Saturday, 22nd September, until 4:00pm, on both campuses.
-
-    Students who will not have explained their situation to Finance by 5:00 pm on Monday, 24th September 24, 2018, will be considered not to be in session, and will have their selected courses dropped from the system.
-
-    Let us cooperate and work together.
-
-    Regards,
-
-    Prof. James Kombo
-    Ag. Vice Chancellor.</string>
-
+    <string name="aboutUs">Kenya Ports Authority is a state corporation with the responsibility to "maintain, operate, improve and regulate all scheduled seaports" on the Indian Ocean coastline of Kenya, including principally Kilindini Harbour at Mombasa.\nOther KPA ports include Lamu, Malindi, Kilifi, Mtwapa, Kiunga, Shimoni, Funzi and Vanga.\n
+        Headquarters: Mombasa\n Jurisdiction: Kenya\n Founded: 1978\n \n
+        <b>Agency executives: :</b>\n Michael Maina, Chairman;\n Daniel Manduku, Chief Executive Officer\n
+        Parent agency: Transport\n
+        Subsidiary: Mombasa Port
+    </string>
 
 </resources>

@@ -22,12 +22,10 @@
         </activity>
         <activity android:name=".Login.login" />
         <activity android:name=".home" />
-        <activity android:name=".personalinfo" />
         <activity android:name=".Login.newaccount" />
         <activity android:name=".Login.resetpassword" />
         <activity android:name=".inquiry_notifications" />
         <activity android:name=".leave_notifications" />
-        <activity android:name=".aboutus" />
     </application>
 
 </manifest>

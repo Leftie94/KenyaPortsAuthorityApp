@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFFFFF"
-        tools:context=".personalinfo"
+        tools:context=".PersonInfo"
         tools:layout_editor_absoluteY="81dp">
 
         <TextView
@@ -259,6 +259,8 @@
             android:layout_height="25dp"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
+            android:entries="@array/gender"
+            android:gravity="center"
             android:background="@drawable/rounded_txtedit"
             app:layout_constraintBottom_toBottomOf="@+id/txtgender"
             app:layout_constraintEnd_toEndOf="parent"
@@ -278,5 +280,18 @@
             android:background="@drawable/rounded_txtedit"
             app:layout_constraintBaseline_toBaselineOf="@+id/txtdob"
             app:layout_constraintEnd_toEndOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress_circle"
+        android:indeterminateTint="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginEnd="170dp"
+        android:layout_marginRight="170dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/genderspinner"
+        android:layout_centerInParent="true"/>
 
 </android.support.constraint.ConstraintLayout>
