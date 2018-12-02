@@ -55,6 +55,7 @@ public class infofragment extends Fragment {
         myemail = view.findViewById(R.id.editemail);
         progressBar = view.findViewById(R.id.progress_circle);
         applychanges = view.findViewById(R.id.btnapply);
+        progressBar.setVisibility(View.VISIBLE);
 
         applychanges.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,6 +149,7 @@ public class infofragment extends Fragment {
         DatabaseReference current_user_db = databaseReference.child(user_id);
         current_user_db.child("Name").setValue(email);*/
         if (user != null) {
+            progressBar.setVisibility(View.INVISIBLE);
             if (user.getDisplayName() != null) {
                 firstname.setText(user.getDisplayName());
             }
