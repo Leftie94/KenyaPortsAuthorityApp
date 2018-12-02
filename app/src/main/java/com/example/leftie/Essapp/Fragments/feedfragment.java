@@ -62,7 +62,11 @@ public class feedfragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.myrecycler);
         mRecyclerView.setHasFixedSize(true);
         mAdapter = new feedadapter(cardList);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity(),LinearLayoutManager.VERTICAL,false));
+        LinearLayoutManager mManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+        mManager.setReverseLayout(true);
+        mManager.setStackFromEnd(true);
+        mRecyclerView.setLayoutManager(mManager);
+        //mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity(),LinearLayoutManager.VERTICAL,false));
         mRecyclerView.setAdapter(mAdapter);
 
         mProgressCircle = view.findViewById(R.id.progress_circle);

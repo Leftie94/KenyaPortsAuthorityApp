@@ -40,7 +40,11 @@ public class inquiry_notifications extends AppCompatActivity {
         inquiryrecyclerview = findViewById(R.id.inquirynotificationrecycler);
         inquiryrecyclerview.setHasFixedSize(true);
         inquiryadapter = new inquirynotificationadapter(cardList);
-        inquiryrecyclerview.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        LinearLayoutManager mManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        mManager.setReverseLayout(true);
+        mManager.setStackFromEnd(true);
+        inquiryrecyclerview.setLayoutManager(mManager);
+        //inquiryrecyclerview.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         inquiryrecyclerview.setAdapter(inquiryadapter);
 
         mProgressCircle = findViewById(R.id.progress_circle);
