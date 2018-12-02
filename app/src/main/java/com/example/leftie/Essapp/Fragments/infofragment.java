@@ -1,6 +1,7 @@
 package com.example.leftie.Essapp.Fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -19,8 +20,11 @@ import com.example.leftie.Essapp.R;
 import com.example.leftie.Essapp.PersonInfo;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import static android.widget.Toast.LENGTH_LONG;
 
@@ -30,10 +34,9 @@ public class infofragment extends Fragment {
     Spinner gender;
     Button applychanges;
     DatabaseReference mDbRef;
-
+    FirebaseDatabase database;
     ProgressBar progressBar;
     private FirebaseAuth mAuth;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -60,7 +63,7 @@ public class infofragment extends Fragment {
 
             }
         });
-
+        loadUser();
         return view;
     }
 
@@ -76,17 +79,17 @@ public class infofragment extends Fragment {
         String my_email = myemail.getText().toString().trim();
 
         if (first_name.isEmpty()){
-            firstname.setError("Username is Required");
+            firstname.setError("First Name is Required");
             firstname.requestFocus();
             return;
         }
         if (second_name.isEmpty()){
-            secondname.setError("Password is Required");
+            secondname.setError("Second Name is Required");
             secondname.requestFocus();
             return;
         }
         if (d_ob.isEmpty()){
-            dob.setError("Password is Required");
+            dob.setError("Date of Birth is Required");
             dob.requestFocus();
             return;
         }
@@ -96,17 +99,17 @@ public class infofragment extends Fragment {
             return;
         }
         if (tel_no.isEmpty()){
-            telno.setError("Password is Required");
+            telno.setError("Tel Number is Required");
             telno.requestFocus();
             return;
         }
         if (box_no.isEmpty()){
-            mailbox.setError("Password is Required");
+            mailbox.setError("Box Number is Required");
             mailbox.requestFocus();
             return;
         }
         if (c_ity.isEmpty()){
-            city.setError("Password is Required");
+            city.setError("City is Required");
             city.requestFocus();
             return;
         }
@@ -125,9 +128,10 @@ public class infofragment extends Fragment {
         progressBar.setVisibility(View.VISIBLE);
         if(!TextUtils.isEmpty(first_name) && (!TextUtils.isEmpty(second_name))){
 
-            String id = mDbRef.push().getKey();
-            PersonInfo Info = new PersonInfo(id, first_name,second_name, d_ob, g_ender , tel_no,box_no, c_ity, my_email);
-            mDbRef.child(id).setValue(Info);
+
+            String email = mAuth.getCurrentUser().getUid();
+            PersonInfo Info = new PersonInfo(first_name,second_name, d_ob, g_ender , tel_no,box_no, c_ity, my_email);
+            mDbRef.child(email).setValue(Info);
             progressBar.setVisibility(View.GONE);
 
             Toast.makeText(getActivity(), "Your personal information has been updated successfully.\n Thank you.", LENGTH_LONG).show();
@@ -140,6 +144,9 @@ public class infofragment extends Fragment {
     private void loadUser() {
         final FirebaseUser user = mAuth.getCurrentUser();
 
+        /*String user_id= mAuth.getCurrentUser().getUid();
+        DatabaseReference current_user_db = databaseReference.child(user_id);
+        current_user_db.child("Name").setValue(email);*/
         if (user != null) {
             if (user.getDisplayName() != null) {
                 firstname.setText(user.getDisplayName());
@@ -147,9 +154,102 @@ public class infofragment extends Fragment {
             if (user.getEmail() != null) {
                 myemail.setText(user.getEmail());
             }
-        }
-    }
 
+            database = FirebaseDatabase.getInstance();
+            DatabaseReference first_name = database.getReference("Users").child(user.getUid()).child("first_name");
+            DatabaseReference second_name = database.getReference("Users").child(user.getUid()).child("second_name");
+            DatabaseReference d_ob = database.getReference("Users").child(user.getUid()).child("dob");
+            DatabaseReference g_ender = database.getReference("Users").child(user.getUid()).child("gender");
+            DatabaseReference tel = database.getReference("Users").child(user.getUid()).child("tel");
+            DatabaseReference mail = database.getReference("Users").child(user.getUid()).child("mail");
+            DatabaseReference c_ity = database.getReference("Users").child(user.getUid()).child("city");
+            first_name.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String value = dataSnapshot.getValue(String.class);
+                    firstname.setText(value);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+            second_name.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String value = dataSnapshot.getValue(String.class);
+                    secondname.setText(value);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+            d_ob.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String value = dataSnapshot.getValue(String.class);
+                    dob.setText(value);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+            g_ender.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String value = dataSnapshot.getValue(String.class);
+                    if(value.equals("Male")){
+                        gender.setSelection(1);
+
+                    }else{
+                        gender.setSelection(2);
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+            tel.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String value = dataSnapshot.getValue(String.class);
+                    telno.setText(value);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+            mail.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String value = dataSnapshot.getValue(String.class);
+                    mailbox.setText(value);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+            c_ity.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    String value = dataSnapshot.getValue(String.class);
+                    city.setText(value);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+
+        }
+
+    }
 }
 
 

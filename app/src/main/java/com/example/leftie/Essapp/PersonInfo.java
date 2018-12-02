@@ -4,10 +4,9 @@ public class PersonInfo {
 
     private String id,  mFirst_name,  mSecond_name,  mDob,  mGender, mTel,  mMail,  mCity,  mEmail;
 
-    public PersonInfo(String id, String first_name, String second_name, String dob,
+    public PersonInfo(String first_name, String second_name, String dob,
                       String gender, String tel, String mail, String city, String email) {
 
-        this.id = id;
         this.mFirst_name = first_name;
         this.mSecond_name = second_name;
         this.mDob = dob;
@@ -18,13 +17,6 @@ public class PersonInfo {
         this.mEmail = email;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getFirst_name() {
         return mFirst_name;

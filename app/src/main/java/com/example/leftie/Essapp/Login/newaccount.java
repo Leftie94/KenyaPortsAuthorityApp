@@ -74,17 +74,10 @@ public class newaccount extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressDialog.dismiss();
-
                 if (task.isSuccessful()){
-
                     Toast.makeText(newaccount.this, "Registration Successful!!! ", Toast.LENGTH_LONG).show();
                     Intent i = new Intent(newaccount.this, home.class);
                     startActivity(i);
-
-                    String user_id=FireAuth.getCurrentUser().getUid();
-                    DatabaseReference current_user_db=databaseReference.child(user_id);
-                    current_user_db.child("Name").setValue(email);
-
                 }
                 else {
                     Log.e("ERROR",task.getException().toString());
