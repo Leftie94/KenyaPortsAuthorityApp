@@ -1,8 +1,6 @@
 package com.example.leftie.Essapp.Fragments;
 
 import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -39,8 +37,7 @@ public class leavefragment extends Fragment {
     TextView date1, date2;
     EditText reasonedit;
     DatePickerDialog datePickerDialog;
-    DatabaseReference databaseleave;
-
+    DatabaseReference mRef;
 
     @Nullable
     @Override
@@ -54,17 +51,11 @@ public class leavefragment extends Fragment {
         date2 = view.findViewById(R.id.txtto);
         reasonedit = view.findViewById(R.id.editreason);
         submit = view.findViewById(R.id.btnsubmit);
-        databaseleave = FirebaseDatabase.getInstance().getReference("LEAVE REQUEST DATA");
-
-
-
+        mRef = FirebaseDatabase.getInstance().getReference("LEAVE REQUEST DATA");
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),R.array.leavetype, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinleave.setAdapter(adapter);
-
-
-
 
 
         pickdate1.setOnClickListener(new View.OnClickListener() {
@@ -88,8 +79,6 @@ public class leavefragment extends Fragment {
 
             }
         });
-
-
         pickdate2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -113,11 +102,9 @@ public class leavefragment extends Fragment {
         });
 
 
-
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 newleaverequest();
                 spinleave.setSelection(0);
                 date1.setText("Selected Date");
@@ -126,7 +113,6 @@ public class leavefragment extends Fragment {
 
             }
         });
-
 
         return view;
     }
@@ -140,10 +126,10 @@ public class leavefragment extends Fragment {
 
         if(!TextUtils.isEmpty(leavetype) && (!TextUtils.isEmpty(leavereason))){
 
-            String id = databaseleave.push().getKey();
+            String id = mRef.push().getKey();
 
             Leave leave= new Leave(id,leavetype,fromdate,todate,leavereason);
-            databaseleave.child(id).setValue(leave);
+            mRef.child(id).setValue(leave);
 
             Toast.makeText(getActivity(), "Your request has been recieved and will be processed. Thank you.", LENGTH_LONG).show();
 
@@ -151,10 +137,7 @@ public class leavefragment extends Fragment {
             Toast.makeText(getActivity(), "Please enter the missing field.", LENGTH_LONG).show();
         }
 
-
-
     }
-
 
     // Inflate the menu; this adds items to the action bar.
     @Override
@@ -171,10 +154,6 @@ public class leavefragment extends Fragment {
                 Intent i = new Intent(getActivity(),leave_notifications.class);
                 startActivity(i);
                 return true;
-
-
-
-
             default:
                 return super.onOptionsItemSelected(item);
         }
