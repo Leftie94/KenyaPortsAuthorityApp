@@ -1,4 +1,4 @@
-package com.example.leftie.Essapp;
+package com.example.leftie.Essapp.Models;
 
 public class PersonInfo {
 
