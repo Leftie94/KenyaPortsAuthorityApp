@@ -4,16 +4,17 @@ import com.google.firebase.database.Exclude;
 
 public class inquiry {
 
-    private String mTo,mSubject,mMessage,mKey;
+    private String mTo,mSubject,mMessage,mKey,mResponse;
 
     public inquiry(){
 
     }
 
-    public inquiry(String to, String subject, String message) {
+    public inquiry(String to, String subject, String message, String response) {
         this.mTo = to;
         this.mSubject = subject;
         this.mMessage = message;
+        this.mResponse = response;
     }
 
     public String getTo() {
@@ -47,5 +48,13 @@ public class inquiry {
     @Exclude
     public void setKey(String key) {
         mKey = key;
+    }
+
+    public String getResponse() {
+        return mResponse;
+    }
+
+    public void setResponse(String mResponse) {
+        this.mResponse = mResponse;
     }
 }

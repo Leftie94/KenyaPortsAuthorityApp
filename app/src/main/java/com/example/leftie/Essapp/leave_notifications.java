@@ -67,7 +67,7 @@ public class leave_notifications extends AppCompatActivity {
             public void onClick(View view, int position) {
                 final Leave item = cardList.get(position);
                 dialog.setTitle(item.getType());
-                dialog.setMessage(item.getReason());
+                dialog.setMessage(item.getReply());
                 dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -120,7 +120,7 @@ public class leave_notifications extends AppCompatActivity {
                 ) {
                     @Override
                     protected void populateViewHolder(LeaveHolder viewHolder, Leave model, int position) {
-                        viewHolder.setDetails(model.getType(),model.getFrom(),model.getTo(),model.getReason());
+                        viewHolder.setDetails(model.getType(),model.getFrom(),model.getTo(),model.getReason(),model.getReply());
                     }
 
                 };

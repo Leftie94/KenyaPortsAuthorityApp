@@ -13,12 +13,12 @@ public class LeaveHolder extends RecyclerView.ViewHolder {
         mView = itemView;
     }
 
-    public void setDetails(String type, String from, String to, String reason){
+    public void setDetails(String type, String from, String to, String reason, String reply){
 
         TextView mType = itemView.findViewById(R.id.txttitle);
         TextView mDate = itemView.findViewById(R.id.txtsubtitle);
 
         mType.setText(type);
-        mDate.setText(from + to);
+        mDate.setText("Leave from" + from +" to "+ to);
     }
 }

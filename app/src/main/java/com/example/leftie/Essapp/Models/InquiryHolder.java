@@ -14,7 +14,7 @@ public class InquiryHolder extends RecyclerView.ViewHolder {
         mView = itemView;
     }
 
-    public void setDetails(Context ctx, String to, String subject, String message){
+    public void setDetails(Context ctx, String to, String subject, String message, String response){
 
         TextView mT0 = itemView.findViewById(R.id.txttitle);
         TextView mSubject = itemView.findViewById(R.id.txtsubtitle);

@@ -49,13 +49,7 @@ public class login extends AppCompatActivity {
         dialog.setMessage("Input Values");
         dialog.setCancelable(true);
 
-        Button next = findViewById(R.id.btnNxt);
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),home.class));
-            }
-        });
+
         signbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

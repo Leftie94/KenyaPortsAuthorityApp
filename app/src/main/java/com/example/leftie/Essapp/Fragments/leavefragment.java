@@ -126,12 +126,13 @@ public class leavefragment extends Fragment {
         String fromdate = date1.getText().toString().trim();
         String todate = date2.getText().toString().trim();
         String leavereason = reasonedit.getText().toString().trim();
+        String reply = "Waiting for leave approval";
 
         if(!TextUtils.isEmpty(leavetype) && (!TextUtils.isEmpty(leavereason))){
 
             String id = mAuth.getCurrentUser().getUid();
 
-            Leave leave= new Leave(leavetype,fromdate,todate,leavereason);
+            Leave leave= new Leave(leavetype,fromdate,todate,leavereason, reply);
             mRef.child(id).setValue(leave);
 
             Toast.makeText(getActivity(), "Your request has been recieved and will be processed. Thank you.", LENGTH_LONG).show();

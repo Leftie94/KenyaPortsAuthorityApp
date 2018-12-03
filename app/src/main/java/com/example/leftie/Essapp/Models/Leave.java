@@ -4,16 +4,17 @@ import com.google.firebase.database.Exclude;
 
 public class Leave {
 
-    private String mType,mFrom,mTo,mReason,mKey;
+    private String mType,mFrom,mTo,mReason,mKey, mReply;
 
     public Leave(){
 
     }
-    public Leave(String type, String from, String to, String reason) {
+    public Leave(String type, String from, String to, String reason, String reply) {
         this.mType = type;
         this.mFrom = from;
         this.mTo = to;
         this.mReason = reason;
+        this.mReply = reply;
     }
 
     public String getType() {
@@ -54,5 +55,13 @@ public class Leave {
     @Exclude
     public void setKey(String mKey) {
         this.mKey = mKey;
+    }
+
+    public String getReply() {
+        return mReply;
+    }
+
+    public void setReply(String mReply) {
+        this.mReply = mReply;
     }
 }

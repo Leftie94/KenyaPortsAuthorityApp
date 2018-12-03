@@ -63,11 +63,12 @@ public class inquiriesfragment extends Fragment {
         String to = spinner.getSelectedItem().toString().trim();
         String subject = edtsubject.getText().toString().trim();
         String message = edtmessage.getText().toString().trim();
+        String reponse = "Waiting for response";
 
         if(!TextUtils.isEmpty(to) && (!TextUtils.isEmpty(message))){
 
             String id = mAuth.getCurrentUser().getUid();
-            inquiry feedback = new inquiry(to, subject,message);
+            inquiry feedback = new inquiry(to, subject,message, reponse);
             mDbRef.child(id).setValue(feedback);
             Toast.makeText(getActivity(), "Your inquiry has been recieved and will be responded to as soon as possible", LENGTH_LONG).show();
 

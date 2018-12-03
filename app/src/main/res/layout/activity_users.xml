@@ -13,8 +13,11 @@
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="96dp"
-        android:text="Hi, welcome"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:text="WELCOME"
         android:textSize="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -77,37 +80,12 @@
         android:id="@+id/textaccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="24dp"
         android:onClick="newaccount_click"
         android:text="Don't have an account?"
         android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnSignin"
         app:layout_constraintStart_toStartOf="@+id/btnSignin"
         app:layout_constraintTop_toBottomOf="@+id/btnSignin" />
 
-    <TextView
-        android:id="@+id/txtsignup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:onClick="resetpassword_click"
-        android:text="Forgot password?"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/btnSignin"
-        app:layout_constraintTop_toBottomOf="@+id/btnSignin" />
-
-    <Button
-        android:id="@+id/btnNxt"
-        android:layout_width="315dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/rounded_txtedit"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:onClick="signin_click"
-        android:text="Next"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtsignup" />
 </android.support.constraint.ConstraintLayout>

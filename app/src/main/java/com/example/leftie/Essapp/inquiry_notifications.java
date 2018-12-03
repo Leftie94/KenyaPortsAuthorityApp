@@ -63,7 +63,7 @@ public class inquiry_notifications extends AppCompatActivity {
             public void onClick(View view, int position) {
                 final inquiry item = cardList.get(position);
                 dialog.setTitle(item.getSubject());
-                dialog.setMessage(item.getMessage());
+                dialog.setMessage(item.getResponse());
                 dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -116,7 +116,7 @@ public class inquiry_notifications extends AppCompatActivity {
                 ) {
                     @Override
                     protected void populateViewHolder(InquiryHolder viewHolder, inquiry model, int position) {
-                        viewHolder.setDetails(inquiry_notifications.this,model.getTo(),model.getSubject(),model.getMessage());
+                        viewHolder.setDetails(inquiry_notifications.this,model.getTo(),model.getSubject(),model.getMessage(),model.getResponse());
                     }
 
                 };
@@ -124,3 +124,4 @@ public class inquiry_notifications extends AppCompatActivity {
 
     }
 }
+

@@ -154,6 +154,7 @@ public class feedfragment extends Fragment {
             case R.id.signout:
                 mAuth.signOut();
                 Intent i = new Intent(getActivity(),login.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK );
                 startActivity(i);
                 return true;
             case R.id.aboutus:
