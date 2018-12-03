@@ -1,6 +1,5 @@
 package com.example.leftie.Essapp.Fragments;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,8 +17,9 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.leftie.Essapp.R;
-import com.example.leftie.Essapp.inquiry;
+import com.example.leftie.Essapp.Models.inquiry;
 import com.example.leftie.Essapp.inquiry_notifications;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,7 +30,8 @@ public class inquiriesfragment extends Fragment {
     EditText edtsubject,edtmessage;
     Spinner spinner;
     Button send;
-    DatabaseReference databaseinquiries;
+    DatabaseReference mDbRef;
+    FirebaseAuth mAuth;
 
     @Nullable
     @Override
@@ -42,7 +43,8 @@ public class inquiriesfragment extends Fragment {
         edtsubject = view.findViewById(R.id.editsubject);
         edtmessage = view.findViewById(R.id.editmessage);
         send = view.findViewById(R.id.btnsend);
-        databaseinquiries = FirebaseDatabase.getInstance().getReference("INQUIRY DATA");
+        mDbRef = FirebaseDatabase.getInstance().getReference("INQUIRY DATA");
+        mAuth = FirebaseAuth.getInstance();
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,9 +66,9 @@ public class inquiriesfragment extends Fragment {
 
         if(!TextUtils.isEmpty(to) && (!TextUtils.isEmpty(message))){
 
-            String id = databaseinquiries.push().getKey();
-            inquiry feedback = new inquiry(id,to, subject,message);
-            databaseinquiries.child(id).setValue(feedback);
+            String id = mAuth.getCurrentUser().getUid();
+            inquiry feedback = new inquiry(to, subject,message);
+            mDbRef.child(id).setValue(feedback);
             Toast.makeText(getActivity(), "Your inquiry has been recieved and will be responded to as soon as possible", LENGTH_LONG).show();
 
         }else {

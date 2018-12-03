@@ -20,9 +20,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.leftie.Essapp.Leave;
+import com.example.leftie.Essapp.Models.Leave;
 import com.example.leftie.Essapp.R;
 import com.example.leftie.Essapp.leave_notifications;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -38,6 +39,7 @@ public class leavefragment extends Fragment {
     EditText reasonedit;
     DatePickerDialog datePickerDialog;
     DatabaseReference mRef;
+    FirebaseAuth mAuth;
 
     @Nullable
     @Override
@@ -52,6 +54,7 @@ public class leavefragment extends Fragment {
         reasonedit = view.findViewById(R.id.editreason);
         submit = view.findViewById(R.id.btnsubmit);
         mRef = FirebaseDatabase.getInstance().getReference("LEAVE REQUEST DATA");
+        mAuth = FirebaseAuth.getInstance();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),R.array.leavetype, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -126,9 +129,9 @@ public class leavefragment extends Fragment {
 
         if(!TextUtils.isEmpty(leavetype) && (!TextUtils.isEmpty(leavereason))){
 
-            String id = mRef.push().getKey();
+            String id = mAuth.getCurrentUser().getUid();
 
-            Leave leave= new Leave(id,leavetype,fromdate,todate,leavereason);
+            Leave leave= new Leave(leavetype,fromdate,todate,leavereason);
             mRef.child(id).setValue(leave);
 
             Toast.makeText(getActivity(), "Your request has been recieved and will be processed. Thank you.", LENGTH_LONG).show();

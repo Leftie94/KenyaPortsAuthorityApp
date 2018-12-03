@@ -151,8 +151,6 @@ public class feedfragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.refresh:
-                return true;
             case R.id.signout:
                 mAuth.signOut();
                 Intent i = new Intent(getActivity(),login.class);

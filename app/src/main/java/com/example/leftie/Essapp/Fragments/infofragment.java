@@ -9,7 +9,6 @@ import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -17,7 +16,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.leftie.Essapp.R;
-import com.example.leftie.Essapp.PersonInfo;
+import com.example.leftie.Essapp.Models.PersonInfo;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -55,7 +54,6 @@ public class infofragment extends Fragment {
         myemail = view.findViewById(R.id.editemail);
         progressBar = view.findViewById(R.id.progress_circle);
         applychanges = view.findViewById(R.id.btnapply);
-        progressBar.setVisibility(View.VISIBLE);
 
         applychanges.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,7 +167,9 @@ public class infofragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String value = dataSnapshot.getValue(String.class);
-                    firstname.setText(value);
+                    if (value != null) {
+                        firstname.setText(value);
+                    }
                 }
 
                 @Override
@@ -180,7 +180,9 @@ public class infofragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String value = dataSnapshot.getValue(String.class);
-                    secondname.setText(value);
+                    if (value != null) {
+                        secondname.setText(value);
+                    }
                 }
 
                 @Override
@@ -191,7 +193,9 @@ public class infofragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String value = dataSnapshot.getValue(String.class);
-                    dob.setText(value);
+                    if (value != null) {
+                        dob.setText(value);
+                    }
                 }
 
                 @Override
@@ -202,12 +206,14 @@ public class infofragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String value = dataSnapshot.getValue(String.class);
-                    if(value.equals("Male")){
-                        gender.setSelection(1);
+                    if (value != null) {
+                        if (value.equals("Male")) {
+                            gender.setSelection(1);
 
-                    }else{
-                        gender.setSelection(2);
+                        } else {
+                            gender.setSelection(2);
 
+                        }
                     }
                 }
 
@@ -219,7 +225,9 @@ public class infofragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String value = dataSnapshot.getValue(String.class);
-                    telno.setText(value);
+                    if (value != null) {
+                        telno.setText(value);
+                    }
                 }
 
                 @Override
@@ -230,7 +238,9 @@ public class infofragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String value = dataSnapshot.getValue(String.class);
-                    mailbox.setText(value);
+                    if (value != null) {
+                        mailbox.setText(value);
+                    }
                 }
 
                 @Override
@@ -241,7 +251,9 @@ public class infofragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     String value = dataSnapshot.getValue(String.class);
-                    city.setText(value);
+                    if (value != null) {
+                        city.setText(value);
+                    }
                 }
 
                 @Override

@@ -6,13 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.leftie.Essapp.Models.Upload;
+import com.example.leftie.Essapp.Models.Leave;
 import com.example.leftie.Essapp.R;
 
 import java.util.ArrayList;
 
 public class leavenotificationsadapter extends RecyclerView.Adapter<leavenotificationsadapter.cardholder> {
-    private ArrayList<Upload> lncardlist;
+    private ArrayList<Leave> lncardlist;
 
     public static class cardholder extends RecyclerView.ViewHolder{
         public TextView mtextview1, mtextview2;
@@ -24,7 +24,7 @@ public class leavenotificationsadapter extends RecyclerView.Adapter<leavenotific
         }
     }
 
-    public leavenotificationsadapter(ArrayList<Upload> cardlist){
+    public leavenotificationsadapter(ArrayList<Leave> cardlist){
         lncardlist = cardlist;
     }
 
@@ -37,10 +37,10 @@ public class leavenotificationsadapter extends RecyclerView.Adapter<leavenotific
 
     @Override
     public void onBindViewHolder(cardholder holder, int position) {
-        final Upload currentitem = lncardlist.get(position);
+        final Leave currentitem = lncardlist.get(position);
 
-        holder.mtextview1.setText(currentitem.getTitle());
-        holder.mtextview2.setText(currentitem.getSubtitle());
+        holder.mtextview1.setText(currentitem.getType());
+        holder.mtextview2.setText(currentitem.getFrom());
     }
 
     @Override

@@ -6,13 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.leftie.Essapp.Models.Upload;
 import com.example.leftie.Essapp.R;
+import com.example.leftie.Essapp.Models.inquiry;
 
 import java.util.ArrayList;
 
 public class inquirynotificationadapter extends RecyclerView.Adapter<inquirynotificationadapter.cardholder> {
-    private ArrayList<Upload> incardlist;
+    private ArrayList<inquiry> incardlist;
 
     public static class cardholder extends RecyclerView.ViewHolder{
         public TextView mtextview1, mtextview2;
@@ -24,7 +24,7 @@ public class inquirynotificationadapter extends RecyclerView.Adapter<inquirynoti
         }
     }
 
-    public inquirynotificationadapter(ArrayList<Upload> cardlist){
+    public inquirynotificationadapter(ArrayList<inquiry> cardlist){
         incardlist = cardlist;
     }
 
@@ -38,10 +38,10 @@ public class inquirynotificationadapter extends RecyclerView.Adapter<inquirynoti
 
     @Override
     public void onBindViewHolder(cardholder holder, int position) {
-        final Upload currentitem = incardlist.get(position);
+        final inquiry currentitem = incardlist.get(position);
 
-        holder.mtextview1.setText(currentitem.getTitle());
-        holder.mtextview2.setText(currentitem.getSubtitle());
+        holder.mtextview1.setText(currentitem.getTo());
+        holder.mtextview2.setText(currentitem.getSubject());
       }
 
     @Override
